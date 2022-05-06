@@ -8,7 +8,7 @@ type ResolveCallback = (value?: any) => void;
 
 /**
  * use
- * const navigateAsync = useAsyncNavigation();
+ * const [openModal, closeModal] = useAsyncNavigation();
  */
 
 function useAsyncModal<T>() {
