@@ -4,14 +4,8 @@ import {ParamListBase} from '@react-navigation/native';
 
 export interface AsyncNavigationProps<P extends ParamListBase>
   extends NativeStackScreenProps<P> {
-  navigateAsync: (route: string, params?: any) => Promise<any>;
+  navigateAsync: <T>(route: string, params?: any) => Promise<T>;
 }
-
-export type AsyncNavigationRouteProps = {
-  params: {
-    onDismiss: (result: any) => void;
-  };
-};
 
 const withNavigateAsync = (
   AsyncNavigationClient: React.ComponentType<any>,

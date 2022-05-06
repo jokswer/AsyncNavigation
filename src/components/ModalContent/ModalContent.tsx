@@ -1,17 +1,16 @@
 import React from 'react';
 import {Button, StyleSheet, TextInput, View} from 'react-native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-interface Props
-  extends NativeStackScreenProps<AsyncNavigationRouteProps, 'params'> {}
+interface Props {
+  onClose: (result?: any) => void;
+}
 
-const SecondScreen: React.FC<Props> = ({route, navigation}) => {
+const ModalContent: React.FC<Props> = ({onClose}) => {
   const [result, setResult] = React.useState<string>();
 
   const onSetResultPress = React.useCallback(() => {
-    route.params.onDismiss(result);
-    navigation.pop();
-  }, [navigation, route, result]);
+    onClose(result);
+  }, [result, onClose]);
 
   return (
     <View style={styles.container}>
@@ -21,7 +20,7 @@ const SecondScreen: React.FC<Props> = ({route, navigation}) => {
         placeholderTextColor="#00000080"
         onChangeText={setResult}
       />
-      <Button title="Set Screen Result" onPress={onSetResultPress} />
+      <Button title="Set Modal Result" onPress={onSetResultPress} />
     </View>
   );
 };
@@ -31,6 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    height: 300,
   },
   resultInput: {
     borderWidth: 1,
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SecondScreen;
+export default ModalContent;

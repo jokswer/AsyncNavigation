@@ -1,8 +1,8 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import FirstScreen from 'screens/first/FirstScreen';
-import SecondScreen from 'screens/second/SecondScreen';
+import FirstScreen from 'screens/First/FirstScreen';
+import SecondScreen from 'screens/Second/SecondScreen';
 
 import {ROUTE} from './routes';
 

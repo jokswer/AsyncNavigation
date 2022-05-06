@@ -8,7 +8,7 @@ type ResolveCallback = (value?: any) => void;
  * const navigateAsync = useAsyncNavigation();
  */
 
-function useAsyncNavigate() {
+function useAsyncNavigate<T>() {
   const onNavigationResolveRef = React.useRef<ResolveCallback | null>(null);
 
   const navigation = useNavigation<any>();
@@ -19,7 +19,7 @@ function useAsyncNavigate() {
     }, []),
   );
 
-  return (route: string, params?: any): Promise<any> => {
+  return (route: string, params?: any): Promise<T> => {
     return new Promise(resolve => {
       onNavigationResolveRef.current = resolve;
 
